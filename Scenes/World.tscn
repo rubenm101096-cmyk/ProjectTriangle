@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Cell.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/FillerScenes/Filler1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/FillerScenes/Filler2.tscn" type="PackedScene" id=3]
+
+[node name="World" type="Node"]
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.27451, 0.25098, 0.25098, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TriangleContainer" type="Node2D" parent="."]
+position = Vector2( 640, 256 )
+
+[node name="Cell" parent="TriangleContainer" instance=ExtResource( 1 )]
+position = Vector2( 0, -32 )
+
+[node name="Cell2" parent="TriangleContainer" instance=ExtResource( 1 )]
+position = Vector2( -32, 32 )
+
+[node name="Cell3" parent="TriangleContainer" instance=ExtResource( 1 )]
+position = Vector2( 32, 32 )
+
+[node name="Cell4" parent="TriangleContainer" instance=ExtResource( 1 )]
+position = Vector2( 0, 32 )
+scale = Vector2( -1, -1 )
+collision_layer = 2
+collision_mask = 8
+
+[node name="Filler" parent="." instance=ExtResource( 2 )]
+position = Vector2( 592, 384 )
+
+[node name="Filler2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 704, 384 )

@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Drag.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/ShapeList.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[node name="Filler" type="Node2D"]
+
+[node name="ShapeList" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="Shape" type="Area2D" parent="ShapeList"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Polygon" type="Polygon2D" parent="ShapeList/Shape"]
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 0, -16, 16, 16, -16, 16 )
+
+[node name="Collision" type="CollisionPolygon2D" parent="ShapeList/Shape"]
+polygon = PoolVector2Array( 0, -16, 16, 16, -16, 16 )
+
+[node name="Dragger" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource( 1 )
+offset = Vector2( 0, -75 )
+
+[node name="DragCollision" type="CollisionShape2D" parent="Dragger"]
+position = Vector2( 0, 6 )
+shape = SubResource( 1 )
+
+[connection signal="is_being_dragged" from="Dragger" to="ShapeList" method="_on_Dragger_is_being_dragged"]
+[connection signal="mouse_entered" from="Dragger" to="Dragger" method="_on_Dragger_mouse_entered"]
+[connection signal="mouse_exited" from="Dragger" to="Dragger" method="_on_Dragger_mouse_exited"]
+[connection signal="stopped_dragging" from="Dragger" to="ShapeList" method="_on_Dragger_stopped_dragging"]

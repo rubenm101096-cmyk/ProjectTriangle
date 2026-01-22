@@ -1,0 +1,139 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/Drag.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/ShapeList.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Extend"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Shape:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 8 ), Vector2( 0, -4 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Shape2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 40 ), Vector2( 0, 52 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Shape:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 8 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Shape2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 40 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Return"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Shape:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 8 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Shape2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 48 ), Vector2( 0, 40 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 16.0
+
+[node name="Filler" type="Node2D"]
+
+[node name="ShapeList" type="Node2D" parent="."]
+position = Vector2( 0, -24 )
+script = ExtResource( 2 )
+
+[node name="Shape" type="Area2D" parent="ShapeList"]
+position = Vector2( 0, 8 )
+collision_layer = 4
+
+[node name="Polygon" type="Polygon2D" parent="ShapeList/Shape"]
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 0, -16, 16, 16, -16, 16 )
+
+[node name="Collision" type="CollisionPolygon2D" parent="ShapeList/Shape"]
+polygon = PoolVector2Array( 0, -16, 16, 16, -16, 16 )
+
+[node name="Shape2" type="Area2D" parent="ShapeList"]
+position = Vector2( 0, 40 )
+scale = Vector2( -1, -1 )
+collision_layer = 8
+collision_mask = 2
+
+[node name="Polygon" type="Polygon2D" parent="ShapeList/Shape2"]
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 0, -16, 16, 16, -16, 16 )
+
+[node name="Collision" type="CollisionPolygon2D" parent="ShapeList/Shape2"]
+polygon = PoolVector2Array( 0, -16, 16, 16, -16, 16 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ShapeList"]
+anims/Extend = SubResource( 2 )
+anims/RESET = SubResource( 3 )
+anims/Return = SubResource( 4 )
+
+[node name="Dragger" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource( 1 )
+offset = Vector2( 0, -75 )
+
+[node name="DragCollision" type="CollisionShape2D" parent="Dragger"]
+shape = SubResource( 1 )
+
+[connection signal="is_being_dragged" from="Dragger" to="ShapeList" method="_on_Dragger_is_being_dragged"]
+[connection signal="mouse_entered" from="Dragger" to="Dragger" method="_on_Dragger_mouse_entered"]
+[connection signal="mouse_exited" from="Dragger" to="Dragger" method="_on_Dragger_mouse_exited"]
+[connection signal="stopped_dragging" from="Dragger" to="ShapeList" method="_on_Dragger_stopped_dragging"]
