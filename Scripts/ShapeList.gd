@@ -24,6 +24,7 @@ func _on_Dragger_stopped_dragging():
 		self.about_to_free = true
 	elif animationPlayer != null:
 		animationPlayer.play("Return")
+		#return to original position?
 
 func check_shape_list(shape_name, add):
 	var i = 0

@@ -10,9 +10,8 @@
 [node name="ShapeList" type="Node2D" parent="."]
 script = ExtResource( 2 )
 
-[node name="Shape" type="Area2D" parent="ShapeList"]
+[node name="Shape" type="Area2D" parent="ShapeList" groups=["Filler"]]
 collision_layer = 4
-collision_mask = 0
 
 [node name="Polygon" type="Polygon2D" parent="ShapeList/Shape"]
 color = Color( 0, 0, 0, 1 )

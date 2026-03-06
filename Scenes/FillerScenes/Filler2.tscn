@@ -95,7 +95,7 @@ radius = 16.0
 position = Vector2( 0, -24 )
 script = ExtResource( 2 )
 
-[node name="Shape" type="Area2D" parent="ShapeList"]
+[node name="Shape" type="Area2D" parent="ShapeList" groups=["Filler"]]
 position = Vector2( 0, 8 )
 collision_layer = 4
 
@@ -106,7 +106,7 @@ polygon = PoolVector2Array( 0, -16, 16, 16, -16, 16 )
 [node name="Collision" type="CollisionPolygon2D" parent="ShapeList/Shape"]
 polygon = PoolVector2Array( 0, -16, 16, 16, -16, 16 )
 
-[node name="Shape2" type="Area2D" parent="ShapeList"]
+[node name="Shape2" type="Area2D" parent="ShapeList" groups=["Filler"]]
 position = Vector2( 0, 40 )
 scale = Vector2( -1, -1 )
 collision_layer = 8
