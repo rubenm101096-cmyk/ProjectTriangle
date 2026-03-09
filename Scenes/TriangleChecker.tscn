@@ -5,7 +5,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 40.05
 
-[node name="TriangleArea" type="Area2D"]
+[node name="TriangleCheckerArea" type="Area2D"]
 collision_layer = 32
 collision_mask = 3
 input_pickable = false

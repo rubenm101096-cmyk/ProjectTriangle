@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Drag.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/ShapeList.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Filler.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=2]
 resource_name = "Extend"
@@ -90,10 +90,10 @@ tracks/1/keys = {
 radius = 16.0
 
 [node name="Filler" type="Node2D"]
+script = ExtResource( 2 )
 
 [node name="ShapeList" type="Node2D" parent="."]
 position = Vector2( 0, -24 )
-script = ExtResource( 2 )
 
 [node name="Shape" type="Area2D" parent="ShapeList" groups=["Filler"]]
 position = Vector2( 0, 8 )
@@ -133,7 +133,7 @@ offset = Vector2( 0, -75 )
 [node name="DragCollision" type="CollisionShape2D" parent="Dragger"]
 shape = SubResource( 1 )
 
-[connection signal="is_being_dragged" from="Dragger" to="ShapeList" method="_on_Dragger_is_being_dragged"]
+[connection signal="is_being_dragged" from="Dragger" to="." method="_on_Dragger_is_being_dragged"]
 [connection signal="mouse_entered" from="Dragger" to="Dragger" method="_on_Dragger_mouse_entered"]
 [connection signal="mouse_exited" from="Dragger" to="Dragger" method="_on_Dragger_mouse_exited"]
-[connection signal="stopped_dragging" from="Dragger" to="ShapeList" method="_on_Dragger_stopped_dragging"]
+[connection signal="stopped_dragging" from="Dragger" to="." method="_on_Dragger_stopped_dragging"]

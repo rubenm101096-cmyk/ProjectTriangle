@@ -18,7 +18,7 @@ func _process(_delta):
 		emit_signal("stopped_dragging")
 
 	if dragging:
-		get_parent().position = get_global_mouse_position() + offset
+		get_parent().global_position = get_global_mouse_position() + offset
 
 func _on_Dragger_mouse_entered():
 	mouse_over = true

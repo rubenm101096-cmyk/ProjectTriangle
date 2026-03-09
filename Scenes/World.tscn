@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Cell.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/FillerScenes/Filler1.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/FillerScenes/Filler2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/FillerSpawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/CellDown.tscn" type="PackedScene" id=4]
 
 [node name="World" type="Node"]
@@ -46,32 +45,11 @@ position = Vector2( 64, 32 )
 [node name="Cell8" parent="TriangleContainer" instance=ExtResource( 4 )]
 position = Vector2( 32, -32 )
 
-[node name="Filler" parent="." instance=ExtResource( 2 )]
-position = Vector2( 592, 384 )
+[node name="FillerSpawner" parent="." instance=ExtResource( 2 )]
+position = Vector2( 672, 448 )
 
-[node name="Filler7" parent="." instance=ExtResource( 2 )]
-position = Vector2( 608, 464 )
+[node name="FillerSpawner2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 768, 448 )
 
-[node name="Filler8" parent="." instance=ExtResource( 2 )]
-position = Vector2( 520, 464 )
-
-[node name="Filler9" parent="." instance=ExtResource( 2 )]
-position = Vector2( 480, 304 )
-
-[node name="Filler10" parent="." instance=ExtResource( 2 )]
-position = Vector2( 416, 370 )
-
-[node name="Filler3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 504, 390 )
-
-[node name="Filler2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 719, 392 )
-
-[node name="Filler4" parent="." instance=ExtResource( 3 )]
-position = Vector2( 808, 410 )
-
-[node name="Filler5" parent="." instance=ExtResource( 3 )]
-position = Vector2( 888, 416 )
-
-[node name="Filler6" parent="." instance=ExtResource( 3 )]
-position = Vector2( 984, 402 )
+[node name="FillerSpawner3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 576, 448 )
