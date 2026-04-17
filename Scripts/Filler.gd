@@ -3,6 +3,8 @@ extends Node2D
 onready var shape_list = $ShapeList
 onready var animation_player = $ShapeList/AnimationPlayer
 
+export(Array) var fill_identity
+
 var shapes = Array()
 var shapes_ready = Array()
 var original_position
@@ -11,6 +13,10 @@ var about_to_free setget prepare_to_free, is_about_to_free
 var spawn_index setget set_spawn_index
 
 func _ready():
+	if(fill_identity.size() > 4):
+		fill_identity.resize(4)
+	#trycatch amb size 2 o 3?
+	
 	original_position = global_position
 	
 	self.about_to_free = false
@@ -25,8 +31,8 @@ func _on_Dragger_is_being_dragged():
 
 func _on_Dragger_stopped_dragging():
 	if are_all_shapes_over():
+		var main = get_tree().current_scene
 		self.about_to_free = true
-		get_parent().spawn_filler() #<---- Clean Code !!!
 	else:
 		if animation_player != null:
 			animation_player.play("Return")
@@ -50,6 +56,7 @@ func are_all_shapes_over():
 func prepare_to_free(value):
 	about_to_free = value
 	if about_to_free:
+		get_parent().spawn_filler() #<---- Clean Code !!!
 		queue_free()
 
 func is_about_to_free():
