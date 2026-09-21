@@ -12,6 +12,7 @@ script = ExtResource( 2 )
 IsFlipped = true
 
 [node name="Shape" type="Polygon2D" parent="."]
+antialiased = true
 polygon = PoolVector2Array( 0, -32, 32, 32, -32, 32 )
 script = ExtResource( 1 )
 

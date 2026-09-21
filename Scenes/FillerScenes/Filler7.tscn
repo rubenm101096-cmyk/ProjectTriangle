@@ -18,7 +18,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 8 ), Vector2( 0, -4 ) ]
+"values": [ Vector2( -8, 24 ), Vector2( -24, 16 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Shape2:position")
@@ -30,7 +30,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 40 ), Vector2( 0, 52 ) ]
+"values": [ Vector2( 8, 24 ), Vector2( 8, 8 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -45,7 +45,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 8 ) ]
+"values": [ Vector2( -8, 24 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Shape2:position")
@@ -57,14 +57,14 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 40 ) ]
+"values": [ Vector2( 8, 24 ) ]
 }
 
 [sub_resource type="Animation" id=4]
 resource_name = "Return"
 length = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Shape:position")
+tracks/0/path = NodePath("Shape2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -73,10 +73,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 8 ) ]
+"values": [ Vector2( 8, 8 ), Vector2( 8, 24 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Shape2:position")
+tracks/1/path = NodePath("Shape:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -85,7 +85,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 48 ), Vector2( 0, 40 ) ]
+"values": [ Vector2( -24, 16 ), Vector2( -8, 24 ) ]
 }
 
 [sub_resource type="CircleShape2D" id=1]
@@ -93,7 +93,7 @@ radius = 16.0
 
 [node name="Filler" type="Node2D"]
 script = ExtResource( 2 )
-fill_identity = [ false, true, true, false ]
+fill_identity = [ true, false, true, false ]
 
 [node name="DragSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
@@ -105,7 +105,7 @@ stream = ExtResource( 4 )
 position = Vector2( 0, -24 )
 
 [node name="Shape" type="Area2D" parent="ShapeList" groups=["Filler"]]
-position = Vector2( 0, 8 )
+position = Vector2( -8, 24 )
 collision_layer = 4
 
 [node name="Polygon" type="Polygon2D" parent="ShapeList/Shape"]
@@ -116,8 +116,8 @@ polygon = PoolVector2Array( 0, -16, 16, 16, -16, 16 )
 polygon = PoolVector2Array( 0, -16, 16, 16, -16, 16 )
 
 [node name="Shape2" type="Area2D" parent="ShapeList" groups=["Filler"]]
-position = Vector2( 0, 40 )
-scale = Vector2( -1, -1 )
+position = Vector2( 8, 24 )
+rotation = 3.14159
 collision_layer = 8
 collision_mask = 2
 

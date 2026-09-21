@@ -9,11 +9,13 @@ signal is_being_dragged
 signal stopped_dragging
 
 func _process(_delta):
-	if mouse_over and not dragging and Input.is_action_just_pressed("left_click"):
+	var game_state = get_tree().current_scene.curr_state
+	
+	if mouse_over and not dragging and Input.is_action_just_pressed("left_click") and game_state == GameController.State.IDLE:
 		dragging = true
 		emit_signal("is_being_dragged")
 
-	if dragging and Input.is_action_just_released("left_click"):
+	if (dragging and Input.is_action_just_released("left_click")):
 		dragging = false
 		emit_signal("stopped_dragging")
 

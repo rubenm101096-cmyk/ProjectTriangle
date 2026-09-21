@@ -1,5 +1,8 @@
 extends Area2D
 
+onready var fill_cell_sound = $FillCellSound
+onready var score_sound = $ScoreSound
+
 var triangles_location = Array() #Left, Up, Down, Right
 var triangles_filled = Array()
 
@@ -28,8 +31,16 @@ func _on_TriangleChecker_cell_filled(cell):
 	triangles_filled[index] = true
 	
 	if _are_all_triangles_filled():
+		score_sound.play()
+		yield(wait(0.005), "completed")
 		for cell in triangles_location:
 			cell.empty_cell()
+		get_tree().current_scene.Update_Score()
+	else:
+		fill_cell_sound.play()
+
+func wait(seconds):
+	yield(get_tree().create_timer(seconds), "timeout")
 
 func _on_TriangleChecker_cell_emptied(cell):
 	var index = triangles_location.find(cell)

@@ -8,7 +8,7 @@ const TriangleChecker = preload("res://Scenes/TriangleChecker.tscn")
 
 var filler_candidate = null
 var cell_filled = false
-var offset = Vector2(0, -12) #clean code
+var offset = Vector2(0, -12)
 
 signal cell_filled
 signal cell_emptied

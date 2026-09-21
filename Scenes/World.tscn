@@ -1,9 +1,18 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Cell.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/FillerSpawner.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/GameController.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/GameController.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/CellDown.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Coolvetica Rg.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Scenes/Game_Over.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game_over_sound.mp3" type="AudioStream" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 5 )
 
 [node name="World" type="Node"]
 script = ExtResource( 3 )
@@ -12,13 +21,12 @@ script = ExtResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-color = Color( 0.27451, 0.25098, 0.25098, 1 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="TriangleContainer" type="Node2D" parent="."]
-position = Vector2( 640, 256 )
+position = Vector2( 536, 448 )
 
 [node name="Cell" parent="TriangleContainer" instance=ExtResource( 1 )]
 position = Vector2( 0, -32 )
@@ -44,14 +52,113 @@ position = Vector2( 0, 32 )
 [node name="Cell7" parent="TriangleContainer" instance=ExtResource( 4 )]
 position = Vector2( 64, 32 )
 
+[node name="Cell55" parent="TriangleContainer" instance=ExtResource( 1 )]
+position = Vector2( 96, -96 )
+
+[node name="Cell56" parent="TriangleContainer" instance=ExtResource( 4 )]
+position = Vector2( 64, -96 )
+
+[node name="Cell57" parent="TriangleContainer" instance=ExtResource( 4 )]
+position = Vector2( 128, -96 )
+
+[node name="Cell60" parent="TriangleContainer" instance=ExtResource( 1 )]
+position = Vector2( 128, -32 )
+
+[node name="Cell61" parent="TriangleContainer" instance=ExtResource( 4 )]
+position = Vector2( 96, -32 )
+
+[node name="Cell62" parent="TriangleContainer" instance=ExtResource( 4 )]
+position = Vector2( 160, -32 )
+
+[node name="Cell63" parent="TriangleContainer" instance=ExtResource( 4 )]
+position = Vector2( 128, 32 )
+
+[node name="Cell58" parent="TriangleContainer" instance=ExtResource( 1 )]
+position = Vector2( 160, -96 )
+
+[node name="Cell59" parent="TriangleContainer" instance=ExtResource( 4 )]
+position = Vector2( 192, -96 )
+
 [node name="Cell8" parent="TriangleContainer" instance=ExtResource( 4 )]
 position = Vector2( 32, -32 )
 
+[node name="Cell10" parent="TriangleContainer" instance=ExtResource( 1 )]
+position = Vector2( 192, -32 )
+
+[node name="Cell11" parent="TriangleContainer" instance=ExtResource( 1 )]
+position = Vector2( 224, -96 )
+
+[node name="Cell12" parent="TriangleContainer" instance=ExtResource( 1 )]
+position = Vector2( 256, -32 )
+
+[node name="Cell13" parent="TriangleContainer" instance=ExtResource( 1 )]
+position = Vector2( 160, 32 )
+
+[node name="Cell14" parent="TriangleContainer" instance=ExtResource( 1 )]
+position = Vector2( 224, 32 )
+
+[node name="Cell15" parent="TriangleContainer" instance=ExtResource( 1 )]
+position = Vector2( 288, 32 )
+
+[node name="Cell16" parent="TriangleContainer" instance=ExtResource( 4 )]
+position = Vector2( 192, 32 )
+
+[node name="Cell17" parent="TriangleContainer" instance=ExtResource( 4 )]
+position = Vector2( 256, 32 )
+
+[node name="Cell18" parent="TriangleContainer" instance=ExtResource( 4 )]
+position = Vector2( 224, -32 )
+
+[node name="Cell28" parent="TriangleContainer" instance=ExtResource( 1 )]
+position = Vector2( 96, -224 )
+
+[node name="Cell29" parent="TriangleContainer" instance=ExtResource( 1 )]
+position = Vector2( 128, -288 )
+
+[node name="Cell30" parent="TriangleContainer" instance=ExtResource( 1 )]
+position = Vector2( 160, -224 )
+
+[node name="Cell31" parent="TriangleContainer" instance=ExtResource( 1 )]
+position = Vector2( 64, -160 )
+
+[node name="Cell32" parent="TriangleContainer" instance=ExtResource( 1 )]
+position = Vector2( 128, -160 )
+
+[node name="Cell33" parent="TriangleContainer" instance=ExtResource( 1 )]
+position = Vector2( 192, -160 )
+
+[node name="Cell34" parent="TriangleContainer" instance=ExtResource( 4 )]
+position = Vector2( 96, -160 )
+
+[node name="Cell35" parent="TriangleContainer" instance=ExtResource( 4 )]
+position = Vector2( 160, -160 )
+
+[node name="Cell36" parent="TriangleContainer" instance=ExtResource( 4 )]
+position = Vector2( 128, -224 )
+
 [node name="FillerSpawner" parent="." instance=ExtResource( 2 )]
-position = Vector2( 672, 448 )
+position = Vector2( 664, 600 )
 
 [node name="FillerSpawner2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 768, 448 )
+position = Vector2( 760, 600 )
 
 [node name="FillerSpawner3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 576, 448 )
+position = Vector2( 568, 600 )
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -78.5
+margin_right = 78.5
+margin_bottom = 63.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+align = 1
+valign = 1
+
+[node name="Game_Over" parent="." instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 664, 344 )
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )

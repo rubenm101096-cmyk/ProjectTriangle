@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Settings.gd" type="Script" id=1]
+[ext_resource path="res://Coolvetica Rg.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="Settings" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+
+[node name="VolumeLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_right = 1920.0
+margin_bottom = 29.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Volume"
+
+[node name="VolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer"]
+margin_top = 33.0
+margin_right = 1920.0
+margin_bottom = 49.0
+
+[node name="MuteLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_top = 53.0
+margin_right = 1920.0
+margin_bottom = 82.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Mute"
+
+[node name="MuteCheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer"]
+margin_top = 86.0
+margin_right = 1920.0
+margin_bottom = 110.0
+
+[node name="ResolutionButton" type="OptionButton" parent="MarginContainer/VBoxContainer"]
+margin_top = 114.0
+margin_right = 1920.0
+margin_bottom = 134.0
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/VolumeSlider" to="." method="_on_VolumeSlider_value_changed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/MuteCheckBox" to="." method="_on_MuteCheckBox_toggled"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/ResolutionButton" to="." method="_on_ResolutionButton_item_selected"]
