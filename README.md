@@ -2,6 +2,9 @@
 
 ## Arcade puzzle game made with Godot (GDScript). It is a remake of a game I originally built in Unity right after finishing university.
 
+<img width="600" alt="Recording 2026-10-25 at 14 57 49" src="https://github.com/user-attachments/assets/e61a32ee-a4b4-424c-bf37-eea58c30bcc3" />
+
+
 ## Gameplay
 The board is a grid of triangles.
 Each turn, 3 random pieces appear, each made of small triangles.
