@@ -21,7 +21,7 @@ Press F5 to play (the main scene is Scenes/MainMenu.tscn).
 
 or
 
-Play the build uploaded on itch.io: https://rubenmartinez.itch.io/triangle
+Play the build uploaded on itch.io: https://rubenmartinez.itch.io/project-triangle
 
 ## Status
 Finished.
